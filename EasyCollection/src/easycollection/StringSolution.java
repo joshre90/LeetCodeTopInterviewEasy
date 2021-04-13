@@ -5,6 +5,8 @@
  */
 package easycollection;
 
+import java.util.Arrays;
+
 /**
  *
  * @author josh
@@ -81,8 +83,30 @@ public class StringSolution {
     
     //#4 - Valid Anagram
      public boolean isAnagram(String s, String t) {
+         
+        s = s.trim().toLowerCase();
+        char [] sortS = s.toCharArray();
+        Arrays.sort(sortS);
         
-         return false;
+        t = t .trim().toLowerCase();
+        char [] sortT = t.toCharArray();
+        Arrays.sort(sortT);
+         
+         if(s.length()!= t.length() ){
+              System.out.println(false + " length");
+             return false;
+         }
+         
+         for(int i =0; i <= sortS.length-1; i++){
+             System.out.println(sortS[i]);
+             System.out.println(sortT[i]);
+             if (sortS[i]!=sortT[i]){
+                 System.out.println(false + " for");
+                 return false;
+             }
+         }
+         System.out.println(true);
+         return true;
     }
      
      
@@ -105,6 +129,42 @@ public class StringSolution {
      }
           System.out.println("true");
          return true;
+    }
+     
+     //#6 - String to Integer (atoi)
+     
+     //#7 - Implement strStr()
+      public int strStr(String haystack, String needle) {
+
+          if(needle.length()==0){
+               System.out.println(0);
+            return 0;
+          }
+          
+          int leng = (haystack.length()-1) -  (needle.length()-1);
+          
+          
+          System.out.println("length: " + leng);
+          
+          for(int i=0,j=0; i<= leng;i++){
+              j=0;
+              System.out.println("i:" + haystack.charAt(i));
+              if(haystack.charAt(i)== needle.charAt(0)){
+                  //j++;
+              for(int k=0;k<=needle.length()-1;k++){
+                  if(haystack.charAt(i+k) == needle.charAt(k)){
+                      j++;
+                  }
+                  if(j==needle.length()){
+                      System.out.println(i);
+                      return i;
+                  }
+              }
+              }
+              
+          }
+          System.out.println(-1);
+          return -1;
     }
      
 }

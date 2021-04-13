@@ -13,6 +13,7 @@ import java.util.*;
  */
 public class Solution {
 
+    /*ARRAYS*/
     //#1 - Remove Duplicates from Sorted Array
     public int removeDuplicates(int[] nums) {
         int j = 1;
@@ -28,11 +29,11 @@ public class Solution {
         // System.out.println(j);
         return j;
     }
-    
+
     //#2 - Best Time to Buy and Sell Stock II
     public int maxProfit(int[] prices) {
         int result = 0;
-        
+
         return result;
     }
 
@@ -77,7 +78,7 @@ public class Solution {
         return false;
     }
 
-    //#5
+    //#5 - Single Number
     public int singleNumber(int[] nums) {
         Arrays.sort(nums);
         int output = 0;
@@ -94,14 +95,14 @@ public class Solution {
         return output;
     }
 
-    //#5
+    //#6 - Intersection of Two Arrays II
     public int[] intersect(int[] nums1, int[] nums2) {
         int[] output = {};
 
         return output;
     }
 
-    //#6
+    //#7 - Plus One
     public int[] plusOne(int[] digits) {
         //int [] output = {};
         int i = digits.length - 1;
@@ -138,14 +139,14 @@ public class Solution {
         return digits;
     }
 
-    //#7
+    //#8 - Move Zeroes
     public void moveZeroes(int[] nums) {
         int n;
         for (int i = 0; i < nums.length - 1; i++) {
-            for (int j = i+1; j < nums.length; j++) {
-                if(nums[i] ==0 && nums[j]!=0){
-                    nums[i]=nums[j];
-                    nums[j]=0;
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] == 0 && nums[j] != 0) {
+                    nums[i] = nums[j];
+                    nums[j] = 0;
                 }
             }
         }
@@ -153,34 +154,63 @@ public class Solution {
             System.out.println(m);
         }
     }
-    
-    //#8
+
+    //#9 - Two Sum
     public int[] twoSum(int[] nums, int target) {
         int[] output = new int[2];
-        
-        for (int i =0; i<nums.length-1; i++){
-            for( int j=i+1; j<=nums.length-1; j++){
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j <= nums.length - 1; j++) {
                 //System.out.println("i: " + i);
                 //System.out.println("j: " +j);
-            if((nums[i]+nums[j])==target){
-                output[0]=i;
-                output[1]=j;
-                //System.out.println(output[0]);
-                //System.out.println(output[1]);
-                return output;
-            }
+                if ((nums[i] + nums[j]) == target) {
+                    output[0] = i;
+                    output[1] = j;
+                    //System.out.println(output[0]);
+                    //System.out.println(output[1]);
+                    return output;
+                }
             }
         }
-        
+
         System.out.println("nope");
         return output;
     }
-    
-    //#9
+
+    //#10 - Valid Sudoku
     public boolean isValidSudoku(char[][] board) {
-        
-        
+
         return true;
     }
-    
+
+    //11# - Rotate Image
+    public void rotate(int[][] matrix) {
+        int size;
+        for (int i = 0; i < matrix.length - 1; i++) {
+            size = matrix.length - 1 - i;
+            if (size >= 1) {
+                int count = 0;
+                for (int j = i; j < matrix.length - 1 - i; j++) {
+                    int temp = matrix[i][j];
+                    
+                    matrix[i][j] = matrix[size - count][i];
+                    matrix[size - count][i] = matrix[size][size - count];
+                    matrix[size][size - count] = matrix[j][size];
+                    matrix[j][size] = temp;
+                    count++;
+                }
+
+            }
+        }
+
+        System.out.print("\n");
+        for (int k = 0; k <= matrix.length - 1; k++) {
+            for (int l = 0; l <= matrix.length - 1; l++) {
+                System.out.print(matrix[k][l] + ", ");
+            }
+            System.out.print("\n");
+        }
+
+    }
+
 }
